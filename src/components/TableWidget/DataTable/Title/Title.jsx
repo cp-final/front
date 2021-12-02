@@ -1,9 +1,11 @@
 import React from 'react';
 import rowS from "../Row/Row.module.css";
+import s from "./Title.module.css";
+import cn from "classnames";
 
 const Title = () => {
     return (
-        <div className={rowS.row}>
+        <div className={cn(rowS.row, s.title)}>
             <div className={rowS.rowItem}>
                 Number
             </div>

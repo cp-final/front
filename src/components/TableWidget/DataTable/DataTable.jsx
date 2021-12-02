@@ -5,7 +5,7 @@ import Title from "./Title/Title";
 
 const DataTable = ({data}) => {
 
-    const rows = data.map(rowData => <Row data={rowData}/>);
+    const rows = data.map((rowData, index) => <Row key={index} data={rowData}/>);
 
     return (
       <div className={s.wrapper}>

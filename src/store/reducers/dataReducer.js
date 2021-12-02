@@ -12,6 +12,18 @@ const initialState = {
             number: 3,
             segment: 4
         },
+        {
+            number: 1,
+            segment: 1
+        },
+        {
+            number: 2,
+            segment: 2
+        },
+        {
+            number: 3,
+            segment: 4
+        },
     ],
 };
 

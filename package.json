@@ -2,6 +2,7 @@
   "name": "leaders-of-digital-final",
   "version": "0.1.0",
   "private": true,
+  "proxy": "",
   "dependencies": {
     "@nivo/bar": "^0.74.0",
     "@nivo/core": "^0.74.0",
