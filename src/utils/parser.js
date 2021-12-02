@@ -9,17 +9,27 @@ const API = {
 };
 
 const get = async (id) => {
-    const data = await API.test(id);
+    let data;
+    try {
+        data = await API.test(id);
+    } catch (e) {
+        console.log(`${id},null`);
+        return;
+    }
     let i = data.indexOf(selectorSubstr) + selectorSubstr.length;
     let appName = "";
+    let isParsingName = false;
+
     while (data[i] !== "<") {
-        if (data[i] === " " || data[i] === "\n")  {
+        if ((data[i] === " " && !isParsingName) || data[i] === "\n")  {
             i++;
             continue;
         }
+
         appName += data[i++];
     }
-    console.log(appName);
+
+    console.log(`${id},${appName}`);
 };
 
 get(process.argv[2]);
