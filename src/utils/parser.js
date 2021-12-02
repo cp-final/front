@@ -27,6 +27,7 @@ const get = async (id) => {
         }
 
         appName += data[i++];
+        isParsingName = true;
     }
 
     console.log(`${id},${appName}`);
