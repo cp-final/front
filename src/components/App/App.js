@@ -1,17 +1,20 @@
-import {connect} from "react-redux";
 import React from "react";
-import TableWidget from "../TableWidget/DataTableWidget";
+import Navbar from "../Navbar/Navbar";
+import {Route, Switch} from "react-router-dom";
+import {config} from "../../config";
 
-const App = (props) => {
+const App = () => {
+    const content = config.pages.map(page =>
+        <Route exact key={page.path} path={page.path} render={() => <page.Component />}/>
+    );
     return (
         <div>
-            <TableWidget/>
+            <Navbar/>
+            <Switch>
+                {content}
+            </Switch>
         </div>
     );
 };
 
-const mstp = () => ({
-
-});
-
-export default connect(mstp, {})(App);
+export default App;

@@ -1,0 +1,11 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-gap: 20px;
+}
+
+.widgetWrapper {
+    width: 100%;
+}
