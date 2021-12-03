@@ -1,143 +1,45 @@
 class FakeServer {
-    tableData = [
-        {
-            number: 3,
-            segment: 1
-        },
-        {
-            number: 1,
-            segment: 3
-        },
-        {
-            number: 2,
-            segment: 2
-        },
-        {
-            number: 10,
-            segment: 32
-        },
-        {
-            number: 42,
-            segment: 12
-        },
-        {
-            number: 43,
-            segment: 346
-        },
-        {
-            number: 124,
-            segment: 412
-        },
-        {
-            number: 43,
-            segment: 23
-        },
-        {
-            number: 123,
-            segment: 243
-        },
-        {
-            number: 345,
-            segment: 124
-        },
-        {
-            number: 345,
-            segment: 214
-        },
-        {
-            number: 543,
-            segment: 754
-        },
-        {
-            number: 3,
-            segment: 1
-        },
-        {
-            number: 1,
-            segment: 3
-        },
-        {
-            number: 2,
-            segment: 2
-        },
-        {
-            number: 10,
-            segment: 32
-        },
-        {
-            number: 42,
-            segment: 12
-        },
-        {
-            number: 43,
-            segment: 346
-        },
-        {
-            number: 124,
-            segment: 412
-        },
-        {
-            number: 43,
-            segment: 23
-        },
-        {
-            number: 123,
-            segment: 243
-        },
-        {
-            number: 345,
-            segment: 124
-        },
-        {
-            number: 345,
-            segment: 214
-        },
-        {
-            number: 543,
-            segment: 754
-        },
-        {
-            number: 123,
-            segment: 243
-        },
-        {
-            number: 345,
-            segment: 124
-        },
-        {
-            number: 345,
-            segment: 214
-        },
-        {
-            number: 543,
-            segment: 754
-        },
-        {
-            number: 123,
-            segment: 243
-        },
-        {
-            number: 345,
-            segment: 124
-        },
-        {
-            number: 345,
-            segment: 214
-        },
-        {
-            number: 543,
-            segment: 754
-        },
-    ];
+    COUNT = 0;
     PORTION_SIZE = 15;
 
+    constructor() {
+
+    }
+
     getTableData = (portion) => {
-        if (portion * this.PORTION_SIZE > this.tableData.length) return [];
+        if (portion * this.PORTION_SIZE > this.COUNT) return [];
+
+        let data = [];
+
+        for (let i = 0; i < this.PORTION_SIZE; i++)
+            data[i] = {
+                number: portion * this.PORTION_SIZE + i + 1,
+                segment: (Math.random() * 10 % 5 + 1).toFixed(0)
+            };
+
         return {
-            data: this.tableData.slice(this.PORTION_SIZE * portion, this.PORTION_SIZE * (portion + 1)),
-            portionsCount: Math.ceil(this.tableData.length / this.PORTION_SIZE),
+            data,
+            portionsCount: Math.ceil(this.COUNT / this.PORTION_SIZE),
         };
+    };
+
+    getNewTableData = () => {
+        this.genCount();
+
+        return this.getTableData(0);
+    };
+
+    genCount = () => {
+        let count = 0;
+
+        while (count < 100)
+            count = (Math.random() * Math.pow(10, Math.random() * 10 % 6 )).toFixed(0);
+
+        this.COUNT = count;
     }
 }
 
+
+// number
+// segment [1, 5]
 export const fakeServer = new FakeServer();

@@ -1,4 +1,5 @@
 import {setOpenedWidget} from "./uploadingWidget";
+import {getNewTableData, setUninitializedData} from "./dataReducer";
 
 const initialState = {
     file: null,
@@ -56,6 +57,8 @@ export const uploadFile = (file) => async (dispatch) => {
                 ...initialState.fileUploadStatus,
                 uploadedVolume: 100
             }));
+            dispatch(setUninitializedData());
+            dispatch(getNewTableData());
             clearInterval(id);
             return;
         }

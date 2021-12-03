@@ -8,8 +8,10 @@ const initialState = {
     initialized: false,
 };
 
-const SET_TABLE_DATA = "DATA/GET_TABLE_DATA";
+const ADD_TABLE_DATA = "DATA/ADD_TABLE_DATA";
 const SET_IS_FETCHING_TABLE_DATA = "DATA/SET_IS_FETCHING_TABLE_DATA";
+const SET_NEW_TABLE_DATA = "DATA/SET_NEW_TABLE_DATA";
+const SET_UNINITIALIZED_DATA = "DATA/SET_UNINITIALIZED_DATA";
 
 const dataReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -18,27 +20,47 @@ const dataReducer = (state = initialState, action) => {
                 ...state,
                 isFetchingTableData: action.isFetching
             };
-        case SET_TABLE_DATA:
+        case ADD_TABLE_DATA:
             return {
                 ...state,
                 tableData: [...state.tableData, ...action.data.data],
                 portion: state.portion + 1,
                 portionsCount: action.data.portionsCount,
-                initialized: true,
+            };
+        case SET_NEW_TABLE_DATA:
+            return {
+                ...initialState,
+                tableData: [...action.data.data],
+                portion: 1,
+                portionsCount: action.data.portionsCount,
+                initialized: true
+            };
+        case SET_UNINITIALIZED_DATA:
+            return {
+                ...state,
+                initialized: false,
             };
         default:
             return state
     }
 };
 
-export const setTableData = (data) => ({type: SET_TABLE_DATA, data});
+export const addTableData = (data) => ({type: ADD_TABLE_DATA, data});
 export const setIsFetchingTableData = (isFetching) => ({type: SET_IS_FETCHING_TABLE_DATA, isFetching});
-
+export const setNewTableData = (data) => ({type: SET_NEW_TABLE_DATA, data});
+export const setUninitializedData = () => ({type: SET_UNINITIALIZED_DATA});
 
 export const getTableData = (portion) => async (dispatch) => {
     dispatch(setIsFetchingTableData(true));
     const data = await API.getTableData(portion);
-    dispatch(setTableData(data));
+    dispatch(addTableData(data));
+    dispatch(setIsFetchingTableData(false));
+};
+
+export const getNewTableData = () => async (dispatch) => {
+    dispatch(setIsFetchingTableData(true));
+    const data = await API.getNewTableData();
+    dispatch(setNewTableData(data));
     dispatch(setIsFetchingTableData(false));
 };
 

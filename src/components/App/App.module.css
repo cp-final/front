@@ -1,6 +1,7 @@
 .app {
     display: grid;
-    grid-template: 10vh 90vh / 100%;
+    grid-template: 7vh 93vh / 100%;
+    grid-gap: 10px;
     position: relative !important;
 }
 

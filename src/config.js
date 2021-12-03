@@ -36,4 +36,10 @@ export const API = {
             res(data);
         }, 1000);
     }),
+    getNewTableData: () => new Promise((res, rej) => {
+        const data = fakeServer.getNewTableData();
+        setTimeout(() => {
+            res(data);
+        }, 1000);
+    })
 };

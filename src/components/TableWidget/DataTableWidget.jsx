@@ -2,27 +2,31 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import DataTable from "./DataTable/DataTable";
 import s from "./DataTableWidget.module.css";
-import {getTableData} from "../../store/reducers/dataReducer";
+import {getNewTableData, getTableData} from "../../store/reducers/dataReducer";
 
-const DataTableWidget = ({data, portion, portionsCount, initialized, getTableData, isFetching}) => {
-
+const DataTableWidget = ({
+                             data, portion, portionsCount,
+                             initialized, getTableData, isFetching,
+                             getNewTableData
+}) => {
+    const ref = React.createRef();
     const load = () => {
-        if (portion === portionsCount && initialized) return;
-        getTableData(portion);
+        if (portion <= portionsCount && initialized && !isFetching) getTableData(portion);
     };
 
     const handleScroll = (e) => {
-        if ((e.target.scrollHeight <= e.target.scrollTop + e.target.offsetHeight) &&
-            !isFetching
-        ) load();
+        if (e.target.scrollHeight <= e.target.scrollTop + e.target.offsetHeight) load();
     };
 
     useEffect(() => {
-        if (!initialized) load();
-    }, [initialized]);
+        if (!initialized && !isFetching){
+            getNewTableData();
+            ref.current.scrollTop = 0;
+        }
+    }, [initialized, isFetching]);
 
     return (
-        <div className={s.wrapper} onScroll={handleScroll}>
+        <div ref={ref} className={s.wrapper} onScroll={handleScroll}>
             <DataTable data={data} isFetching={isFetching}/>
         </div>
     )
@@ -36,4 +40,4 @@ const mstp = (state) => ({
     isFetching: state.data.isFetchingTableData
 });
 
-export default connect(mstp, {getTableData})(DataTableWidget);
+export default connect(mstp, {getNewTableData, getTableData})(DataTableWidget);

@@ -4,11 +4,22 @@
     padding: 10px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     box-sizing: border-box;
+    background-image: url("../../assets/navbarBkg.svg");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: 10% 0;
 }
 
 .logo {
 
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .nav > * {
@@ -20,9 +31,16 @@
     text-decoration: none;
     color: #000;
     border-bottom: solid 4px transparent;
+    border-top: solid 4px transparent;
     transition: .3s;
 }
 
 .link.active {
     border-bottom-color: var(--main-active-theme);
+}
+
+.cabinet {
+    background: transparent;
+    transition: .2s;
+    cursor: pointer;
 }
