@@ -12,7 +12,7 @@
     display: grid;
     grid-template-rows: 50px auto;
     border-radius: 16px;
-    box-shadow: 0 0 10px 0 grey;
+    box-shadow: 0 0 15px 0 rgba(128, 128, 128, 0.76);
     overflow: hidden;
     transition: .3s;
 }

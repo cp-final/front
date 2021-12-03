@@ -12,7 +12,7 @@ const UploadingStatusWidget = ({
                                    hidden, setOpenedWidget, setHiddenWidget
 }) => {
     return (
-        <div className={cn(s.widget, {[s.hidden]: hidden, [s.closed]: !opened || !fileUploadStatus.uploading})}>
+        <div className={cn(s.widget, {[s.hidden]: hidden, [s.closed]: !opened})}>
             <div className={s.title}>
                 <div className={s.titleText}>Uploading...</div>
                 <div className={s.controls}>
@@ -29,7 +29,7 @@ const UploadingStatusWidget = ({
                 </div>
             </div>
             <div className={s.queue}>
-                <FileUploadingStatus uploaded={fileUploadStatus.uploadedVolume}/>
+                <FileUploadingStatus filename={filename} uploaded={fileUploadStatus.uploadedVolume}/>
             </div>
         </div>
     )

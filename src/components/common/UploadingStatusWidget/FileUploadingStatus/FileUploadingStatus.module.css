@@ -8,3 +8,8 @@
     border-width: 1px 0;
     border-color: grey;
 }
+
+.progressBarWrapper {
+    height: 20px;
+    width: 100%;
+}

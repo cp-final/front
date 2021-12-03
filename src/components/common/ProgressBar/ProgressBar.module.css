@@ -1,0 +1,13 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background: lightgrey;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.progress {
+    background: var(--main-active-theme);
+    height: 100%;
+    border-radius: 16px;
+}
