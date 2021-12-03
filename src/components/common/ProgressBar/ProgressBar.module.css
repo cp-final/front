@@ -7,7 +7,7 @@
 }
 
 .progress {
-    background: var(--main-active-theme);
+    background: linear-gradient(90.16deg, #1FB7F6 4.07%, #14CD6C 91.77%);
     height: 100%;
     border-radius: 16px;
 }

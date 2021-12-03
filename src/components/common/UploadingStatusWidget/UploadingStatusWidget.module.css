@@ -38,7 +38,7 @@
     height: 100%;
     width: 100%;
     border-radius: 16px;
-    background: var(--main-active-theme);
+    background: linear-gradient(90.16deg, #1FB7F6 4.07%, #14CD6C 91.77%);
     color: #fff;
     display: flex;
     justify-content: center;
@@ -72,7 +72,7 @@
 }
 
 .control:nth-child(2):hover {
-    background: rgba(107,12,166,0.69);
+    background: lightcoral;
 }
 
 .queue {

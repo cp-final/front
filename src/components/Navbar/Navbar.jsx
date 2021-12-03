@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink, withRouter} from "react-router-dom";
 import UserCircle from "./../../assets/UserCircle.svg";
 import s from "./Navbar.module.css";
+import logo from "./../../assets/logo.svg";
 import {config} from "../../config";
 
 const Navbar = (props) => {
@@ -13,7 +14,7 @@ const Navbar = (props) => {
     return (
         <div className={s.wrapper}>
             <div className={s.logo}>
-                logo
+                <img src={logo} alt=""/>
             </div>
             <nav className={s.nav}>
                 {items}

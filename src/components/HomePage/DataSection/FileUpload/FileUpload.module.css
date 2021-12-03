@@ -44,12 +44,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90.16deg, #1FB7F6 4.07%, #14CD6C 91.77%);;
+    background: linear-gradient(90.16deg, #1FB7F6 4.07%, #14CD6C 91.77%);
     color: white;
     cursor: pointer;
     transition: .2s;
-}
-
-.submit:hover {
-    background: rgba(47, 10, 86, 0.8);
 }
