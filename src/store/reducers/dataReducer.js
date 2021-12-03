@@ -1,53 +1,35 @@
-import {
-    TableDataProcessor,
-    TableDataSortByNumberHandler,
-    TableDataSortBySegmentHandler
-} from "../../utils/TableDataProcessor";
-
-const tableDataProcessor = new TableDataProcessor([
-    {
-        number: 3,
-        segment: 1
-    },
-    {
-        number: 1,
-        segment: 3
-    },
-    {
-        number: 2,
-        segment: 2
-    },
-]);
+import {API} from "../../config";
 
 const initialState = {
-    tableData: tableDataProcessor.getDefault(),
+    tableData: [],
+    isFetchingTableData: false,
+    portion: 0,
+    portionsCount: 0,
+    initialized: false,
 };
 
-const SORT_BY_NUMBER = "DATA/SORT_BY_NUMBER";
-const SORT_BY_SEGMENT = "DATA/SORT_BY_SEGMENT";
+const SET_TABLE_DATA = "DATA/GET_TABLE_DATA";
 
 const dataReducer = (state = initialState, action) => {
     switch(action.type) {
-        case SORT_BY_NUMBER:{
-            const data = tableDataProcessor.apply(new TableDataSortByNumberHandler());
+        case SET_TABLE_DATA:
             return {
                 ...state,
-                tableData: data
+                tableData: [...state.tableData, ...action.data.data],
+                portion: state.portion + 1,
+                portionsCount: action.data.portionsCount,
+                initialized: true,
             };
-        }
-        case SORT_BY_SEGMENT: {
-            const data = tableDataProcessor.apply(new TableDataSortBySegmentHandler());
-            return {
-                ...state,
-                tableData: data
-            };
-        }
         default:
             return state
     }
 };
 
-export const sortByNumber = () => ({type: SORT_BY_NUMBER});
-export const sortBySegment = () => ({type: SORT_BY_SEGMENT});
+export const setTableData = (data) => ({type: SET_TABLE_DATA, data});
+
+export const getTableData = (portion) => async (dispatch) => {
+    const data = await API.getTableData(portion);
+    dispatch(setTableData(data));
+};
 
 export default dataReducer;
