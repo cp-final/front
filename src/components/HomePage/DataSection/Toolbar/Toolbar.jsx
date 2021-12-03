@@ -1,22 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./Toolbar.module.css";
-import chartPieSlice from "./../../../../assets/ChartPieSlice.svg";
-import slidersHorizontal from "./../../../../assets/SlidersHorizontal.svg";
-import wrench from "./../../../../assets/Wrench.svg";
+import Tool from "./Tool/Tool";
+import DropdownMenu from "./DropdownMenu/DropdownMenu";
+import Item from "./Item/Item";
 
 const Toolbar = () => {
+    const [pieOpened, setPieOpened] = useState(true);
+    const [sliderOpened, setSliderOpened] = useState(true);
+
     return (
         <div className={s.wrapper}>
             <div className={s.toolsGroup}>
-                <div className={s.tool}>
-                    <img src={chartPieSlice} alt=""/>
-                </div>
-                <div className={s.tool}>
-                    <img src={slidersHorizontal} alt=""/>
-                </div>
-                <div className={s.tool}>
-                    <img src={wrench} alt=""/>
-                </div>
+                <Tool className={s.chartPie}
+                      activeClassName={s.active}
+                      active={pieOpened}
+                      setter={setPieOpened}
+                >
+                    <DropdownMenu opened={pieOpened} close={() =>{ setPieOpened(false)}}>
+                        <Item callback={() => console.log("pie")}>Something</Item>
+                    </DropdownMenu>
+                </Tool>
+
+                <Tool className={s.sliders}
+                      activeClassName={s.active}
+                      active={sliderOpened}
+                      setter={setSliderOpened}
+                >
+                    <DropdownMenu opened={sliderOpened} close={() =>{ setSliderOpened(false)}}>
+                        <Item callback={() => console.log("slider")}>Something</Item>
+                        <Item callback={() => console.log("slider2")}>Something2</Item>
+                    </DropdownMenu>
+
+                </Tool>
             </div>
         </div>
     )

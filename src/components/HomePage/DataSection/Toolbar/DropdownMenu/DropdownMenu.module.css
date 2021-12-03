@@ -1,0 +1,21 @@
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    max-width: 170px;
+    height: min-content;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 0 10px 0 lightgrey;
+    cursor: pointer;
+    transition: .3s;
+    transform: scale(.5) translate(-50%, -100%);
+    transform-origin: center;
+    opacity: 0;
+}
+
+.wrapper.opened {
+    transform: scale(1) translate(-50%, -100%);
+    opacity: 1;
+}
+
