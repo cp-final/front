@@ -6,6 +6,9 @@ import cn from "classnames";
 const Title = (props) => {
     return (
         <div className={cn(rowS.row, s.title)}>
+            <div>
+
+            </div>
             <div className={cn(rowS.rowItem, s.title)}>
                 Строка
             </div>

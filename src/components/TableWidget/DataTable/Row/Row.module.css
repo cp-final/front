@@ -1,11 +1,13 @@
 .row {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(2, 1fr);
+    padding-left: 10px;
+    grid-template-columns: 40px calc(50% - 20px) calc(50% - 20px);
     border-radius: 16px;
     border: solid 2px transparent;
     transition: .2s;
     cursor: pointer;
+    align-items: center;
 }
 
 .row:nth-child(2n + 1) {
