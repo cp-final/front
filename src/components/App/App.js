@@ -32,16 +32,6 @@ const App = () => {
         <div>
             <Navbar/>
             {content}
-
-            {/*<CSSTransition*/}
-            {/*    in={show}*/}
-            {/*    classNames={"page"}*/}
-            {/*    timeout={200}*/}
-            {/*>*/}
-            {/*    <div onClick={() => setShow(!show)}>*/}
-            {/*        I'm showable*/}
-            {/*    </div>*/}
-            {/*</CSSTransition>*/}
         </div>
     );
 };
