@@ -1,24 +1,36 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from "./FileUploadSection.module.css";
+import {connect} from "react-redux";
+import {setFile, uploadFile} from "../../../store/reducers/filesReducer";
 
 const FileUploadSection = (props) => {
-    const [file, setFile] = useState(null);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!file) return;
-        console.log(file);
+        if (!props.file) return;
+        props.uploadFile();
     };
 
     return (
         <div className={s.wrapper}>
             <form onSubmit={handleSubmit}>
-                <input onChange={(e) => setFile(e.target.files[0])} type="file"/>
+                <input onChange={(e) => props.setFile(e.target.files[0])} type="file"/>
                 <input type="submit"/>
             </form>
-            {/*<a href="" download>download</a>*/}
+            <div>
+                {props.fileUploadStatus.uploading && "File is uploading"}
+                {props.fileUploadStatus.uploaded && "File is uploaded"}
+                {props.fileUploadStatus.error && "File uploading error"}
+            </div>
         </div>
     )
 };
 
-export default FileUploadSection;
+const mstp = (state) => ({
+    file: state.files.file,
+    fileUploadStatus: state.files.fileUploadStatus
+});
+
+export default connect(mstp, {
+    setFile,
+    uploadFile
+})(FileUploadSection);

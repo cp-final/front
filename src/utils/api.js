@@ -7,4 +7,7 @@ const instance = axios.create({
 
 export const API = {
     test: () => instance.get("test").then(res => res.data),
+    uploadFile: (file) => instance.post("upload", {
+        file
+    }),
 };
