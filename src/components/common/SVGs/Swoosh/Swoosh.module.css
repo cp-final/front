@@ -1,0 +1,16 @@
+.path {
+    stroke: black;
+    stroke-width: 7px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dashoffset: 200;
+    stroke-dasharray: 200;
+    opacity: 0;
+    transition: .3s;
+}
+
+.path.shown {
+    opacity: 1;
+    stroke-dashoffset: 150;
+}

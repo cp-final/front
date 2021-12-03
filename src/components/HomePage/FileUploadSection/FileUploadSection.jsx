@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./FileUploadSection.module.css";
 import {connect} from "react-redux";
 import {setFile, uploadFile} from "../../../store/reducers/filesReducer";
+import WithPreloader from "../../common/WithPreloader";
+import Swoosh from "../../common/SVGs/Swoosh/Swoosh";
+import Cross from "../../common/SVGs/Cross/Cross";
 
 const FileUploadSection = (props) => {
     const handleSubmit = (e) => {
@@ -17,9 +20,10 @@ const FileUploadSection = (props) => {
                 <input type="submit"/>
             </form>
             <div>
-                {props.fileUploadStatus.uploading && "File is uploading"}
-                {props.fileUploadStatus.uploaded && "File is uploaded"}
-                {props.fileUploadStatus.error && "File uploading error"}
+                <WithPreloader in={!props.fileUploadStatus.uploading} classNames={"page"}>
+                    <Swoosh shown={props.fileUploadStatus.uploaded}/>
+                    <Cross shown={props.fileUploadStatus.error}/>
+                </WithPreloader>
             </div>
         </div>
     )
