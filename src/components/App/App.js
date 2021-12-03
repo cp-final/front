@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../Navbar/Navbar";
 import {Route, Switch} from "react-router-dom";
 import {config} from "../../config";
@@ -6,6 +6,7 @@ import {CSSTransition} from "react-transition-group";
 import "./../../index.css";
 
 const App = () => {
+    const [show, setShow] = useState(true);
     const content = config.pages.map(page => {
             return (
                 <Route exact key={page.path} path={page.path}>
@@ -13,7 +14,7 @@ const App = () => {
                         ({match}) => {
                             return <CSSTransition
                                 in={match != null}
-                                timeout={300}
+                                timeout={200}
                                 classNames="page"
                                 unmountOnExit
                             >
@@ -30,9 +31,17 @@ const App = () => {
     return (
         <div>
             <Navbar/>
-            <Switch>
-                {content}
-            </Switch>
+            {content}
+
+            {/*<CSSTransition*/}
+            {/*    in={show}*/}
+            {/*    classNames={"page"}*/}
+            {/*    timeout={200}*/}
+            {/*>*/}
+            {/*    <div onClick={() => setShow(!show)}>*/}
+            {/*        I'm showable*/}
+            {/*    </div>*/}
+            {/*</CSSTransition>*/}
         </div>
     );
 };

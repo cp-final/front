@@ -5,7 +5,7 @@ import s from "./DataSection.module.css";
 const DataSection = (props) => {
     return (
         <div className={s.wrapper}>
-            <div>
+            <div className={s.inputArea}>
                 <input type="text"/>
                 <input type="submit"/>
             </div>

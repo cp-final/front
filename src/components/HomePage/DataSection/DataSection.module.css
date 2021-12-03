@@ -9,3 +9,18 @@
 .widgetWrapper {
     width: 100%;
 }
+
+.inputArea {
+    display: grid;
+    width: calc(100% - 10px);
+    grid-template-columns: 70% 30%;
+    grid-gap: 10px;
+}
+
+.inputArea > input {
+    width: min-content;
+}
+
+.inputArea > input:first-child {
+    width: 100%;
+}
