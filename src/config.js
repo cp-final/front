@@ -41,5 +41,13 @@ export const API = {
         setTimeout(() => {
             res(data);
         }, 3000);
-    })
+    }),
+    getOverview: () => new Promise((res, rej) => {
+        const data = fakeServer.getOverview();
+
+        setTimeout(() => {
+            res(data);
+        });
+    }),
+
 };

@@ -14,7 +14,7 @@ const UploadingStatusWidget = ({
     return (
         <div className={cn(s.widget, {[s.hidden]: hidden, [s.closed]: !opened})}>
             <div className={s.title}>
-                <div className={s.titleText}>Uploading...</div>
+                <div className={s.titleText}>Загрузка...</div>
                 <div className={s.controls}>
                     <div className={s.control}
                          onClick={() => setHiddenWidget(!hidden)}

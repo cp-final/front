@@ -29,6 +29,41 @@ class FakeServer {
         return this.getTableData(0);
     };
 
+    getOverview = () => {
+        return [
+            {
+                "id": "1",
+                "label": "1",
+                "value": 414,
+                "color": "hsl(2, 70%, 50%)"
+            },
+            {
+                "id": "2",
+                "label": "2",
+                "value": 538,
+                "color": "hsl(12, 70%, 50%)"
+            },
+            {
+                "id": "3",
+                "label": "3",
+                "value": 113,
+                "color": "hsl(90, 70%, 50%)"
+            },
+            {
+                "id": "4",
+                "label": "4",
+                "value": 358,
+                "color": "hsl(266, 70%, 50%)"
+            },
+            {
+                "id": "5",
+                "label": "5",
+                "value": 568,
+                "color": "hsl(202, 70%, 50%)"
+            }
+        ]
+    };
+
     genCount = () => {
         let count = 0;
 
@@ -39,7 +74,4 @@ class FakeServer {
     }
 }
 
-
-// number
-// segment [1, 5]
 export const fakeServer = new FakeServer();

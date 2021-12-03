@@ -6,6 +6,7 @@ const initialState = {
     portion: 0,
     portionsCount: 0,
     initialized: false,
+    chartData: null,
 };
 
 const ADD_TABLE_DATA = "DATA/ADD_TABLE_DATA";
@@ -13,6 +14,7 @@ const SET_IS_FETCHING_TABLE_DATA = "DATA/SET_IS_FETCHING_TABLE_DATA";
 const SET_NEW_TABLE_DATA = "DATA/SET_NEW_TABLE_DATA";
 const SET_UNINITIALIZED_DATA = "DATA/SET_UNINITIALIZED_DATA";
 const CLEAR_DATA = "DATA/CLEAR_DATA";
+const SET_CHART_DATA = "DATA/SET_CHART_DATA";
 
 const dataReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -45,6 +47,11 @@ const dataReducer = (state = initialState, action) => {
             return {
                 ...initialState
             };
+        case SET_CHART_DATA:
+            return {
+                ...state,
+                chartData: action.data
+            };
         default:
             return state
     }
@@ -55,6 +62,7 @@ export const setIsFetchingTableData = (isFetching) => ({type: SET_IS_FETCHING_TA
 export const setNewTableData = (data) => ({type: SET_NEW_TABLE_DATA, data});
 export const setUninitializedData = () => ({type: SET_UNINITIALIZED_DATA});
 export const clearData = () => ({type: CLEAR_DATA});
+export const setChartData = (data) => ({type: SET_CHART_DATA, data});
 
 export const getTableData = (portion) => async (dispatch) => {
     dispatch(setIsFetchingTableData(true));
@@ -67,7 +75,9 @@ export const getNewTableData = () => async (dispatch) => {
     dispatch(clearData());
     dispatch(setIsFetchingTableData(true));
     const data = await API.getNewTableData();
+    const overview = await API.getOverview();
     dispatch(setNewTableData(data));
+    dispatch(setChartData(overview));
     dispatch(setIsFetchingTableData(false));
 };
 
