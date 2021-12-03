@@ -18,9 +18,7 @@ const App = () => {
                                 classNames="page"
                                 unmountOnExit
                             >
-                                <div className="page">
                                     <page.Component/>
-                                </div>
                             </CSSTransition>
                         }
                     }
@@ -31,7 +29,9 @@ const App = () => {
     return (
         <div className={s.app}>
             <Navbar/>
-            {content}
+            <div className={s.pageWrapper}>
+                {content}
+            </div>
         </div>
     );
 };
