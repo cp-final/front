@@ -15,7 +15,7 @@
     align-items: center;
     border-radius: 15px;
     padding: 5px;
-    background: #ECE9E9;
+    background: #E7F0F2;
 }
 
 .fileName {
@@ -44,7 +44,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--main-active-theme);
+    background: linear-gradient(90.16deg, #1FB7F6 4.07%, #14CD6C 91.77%);;
     color: white;
     cursor: pointer;
     transition: .2s;

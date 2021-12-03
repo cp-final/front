@@ -5,8 +5,9 @@ import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import Item from "./Item/Item";
 
 const Toolbar = () => {
-    const [pieOpened, setPieOpened] = useState(true);
-    const [sliderOpened, setSliderOpened] = useState(true);
+    const [pieOpened, setPieOpened] = useState(false);
+    const [sliderOpened, setSliderOpened] = useState(false);
+    const [wrenchOpened, setWrenchOpened] = useState(false);
 
     return (
         <div className={s.wrapper}>
@@ -29,6 +30,18 @@ const Toolbar = () => {
                     <DropdownMenu opened={sliderOpened} close={() =>{ setSliderOpened(false)}}>
                         <Item callback={() => console.log("slider")}>Something</Item>
                         <Item callback={() => console.log("slider2")}>Something2</Item>
+                    </DropdownMenu>
+
+                </Tool>
+
+                <Tool className={s.wrench}
+                      activeClassName={s.active}
+                      active={wrenchOpened}
+                      setter={setWrenchOpened}
+                >
+                    <DropdownMenu opened={wrenchOpened} close={() =>{ setWrenchOpened(false)}}>
+                        <Item callback={() => console.log("wrench")}>Something</Item>
+                        <Item callback={() => console.log("wrench2")}>Something2</Item>
                     </DropdownMenu>
 
                 </Tool>

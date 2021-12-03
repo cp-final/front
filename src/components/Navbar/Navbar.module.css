@@ -40,7 +40,7 @@
 }
 
 .link.active {
-    border-bottom-color: var(--main-active-theme);
+    border-bottom-color: #14CD6C;
 }
 
 .cabinet {
