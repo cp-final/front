@@ -1,16 +1,119 @@
 class FakeServer {
-    COUNT = 0;
-    tableData = [];
+    tableData = [4,
+        4,
+        5,
+        5,
+        4,
+        5,
+        4,
+        5,
+        3,
+        5,
+        3,
+        5,
+        3,
+        5,
+        5,
+        5,
+        2,
+        5,
+        4,
+        3,
+        2,
+        3,
+        2,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        4,
+        5,
+        3,
+        3,
+        5,
+        3,
+        3,
+        4,
+        3,
+        3,
+        3,
+        3,
+        3,
+        4,
+        5,
+        3,
+        5,
+        3,
+        3,
+        3,
+        4,
+        5,
+        3,
+        4,
+        3,
+        5,
+        2,
+        5,
+        5,
+        5,
+        3,
+        4,
+        4,
+        3,
+        5,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5,
+        3,
+        5,
+        4,
+        4,
+        5,
+        2,
+        5,
+        5,
+        5,
+        3,
+        5,
+        5,
+        3,
+        5,
+        5,
+        5,
+        3,
+        5,
+        4,
+        3,
+        3,
+        3,
+        4,
+        3,
+        4,
+        5,
+        5,
+        2,
+        5,
+        4,
+        5,
+        4,
+        4,
+        3,
+        5,
+        5,
+        2,
+    ];
+    COUNT = this.tableData.length;
     PORTION_SIZE = 15;
-
-    constructor() {
-
-    }
 
     getTableData = (portion) => {
         if (portion * this.PORTION_SIZE > this.COUNT) return [];
-
-        let data = this.tableData.slice(portion * this.PORTION_SIZE, this.PORTION_SIZE * (portion + 1));
+        const d = this.tableData.slice(portion * this.PORTION_SIZE, this.PORTION_SIZE * (portion + 1));
+        let data = this.map(d, portion * this.PORTION_SIZE + 1);
 
         return {
             data,
@@ -20,9 +123,10 @@ class FakeServer {
 
     getNewTableData = () => {
         this.genCount();
+        this.tableData = [];
 
         for (let i = 0; i < this.COUNT; i++)
-            this.tableData[i] = this.genItem(i);
+            this.tableData[i] = this.genItem();
 
         return this.getTableData(0);
     };
@@ -36,7 +140,7 @@ class FakeServer {
             {id: '5', label: "5", value: 0}
         ];
 
-        this.tableData.forEach(item => {
+        this.map(this.tableData).forEach(item => {
             result.find(resultItem => +resultItem.id === item.segment).value += 1;
         });
 
@@ -52,11 +156,11 @@ class FakeServer {
         this.COUNT = count;
     };
 
-    genItem = (i) => ({
-        number: i,
-        segment: +((Math.random() * 10 % 4 + 1).toFixed(0)),
-        _id: (Math.random() * Math.pow(10, 10)).toFixed(0),
-    });
+    genItem = () => +((Math.random() * 10 % 4 + 1).toFixed(0));
+
+    genId = () => (Math.random() * Math.pow(10, 10)).toFixed(0);
+
+    map = (data, startIndex = 1) => data.map((segment, number) => ({segment, number: number + startIndex, _id: this.genId()}));
 }
 
 export const fakeServer = new FakeServer();
