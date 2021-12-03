@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./Swoosh.module.css";
 import cn from "classnames";
-import withThrottling from "../withThrottling";
 
 const Swoosh = ({shown}) => {
     return (
@@ -11,4 +10,4 @@ const Swoosh = ({shown}) => {
     )
 };
 
-export default withThrottling(Swoosh);
+export default Swoosh;

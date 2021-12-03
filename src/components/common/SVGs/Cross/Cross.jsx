@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./Cross.module.css";
 import cn from "classnames";
-import withThrottling from "../withThrottling";
 
 const Cross = ({shown}) => {
     return (
@@ -16,4 +15,4 @@ const Cross = ({shown}) => {
     )
 };
 
-export default withThrottling(Cross);
+export default Cross;
