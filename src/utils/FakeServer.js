@@ -96,8 +96,40 @@ class FakeServer {
             number: 543,
             segment: 754
         },
+        {
+            number: 123,
+            segment: 243
+        },
+        {
+            number: 345,
+            segment: 124
+        },
+        {
+            number: 345,
+            segment: 214
+        },
+        {
+            number: 543,
+            segment: 754
+        },
+        {
+            number: 123,
+            segment: 243
+        },
+        {
+            number: 345,
+            segment: 124
+        },
+        {
+            number: 345,
+            segment: 214
+        },
+        {
+            number: 543,
+            segment: 754
+        },
     ];
-    PORTION_SIZE = 5;
+    PORTION_SIZE = 15;
 
     getTableData = (portion) => {
         if (portion * this.PORTION_SIZE > this.tableData.length) return [];

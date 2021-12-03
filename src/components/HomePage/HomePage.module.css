@@ -1,7 +1,8 @@
 .wrapper {
     display: grid;
     grid-template-columns: 60% 40%;
-    padding: 25px 45px 0 45px;
+    grid-template-rows: 100%;
+    padding: 25px 45px;
     width: calc(100vw - 10px);
     height: 100%;
     grid-gap: 10px;

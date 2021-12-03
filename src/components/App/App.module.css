@@ -1,3 +1,5 @@
 .app {
-
+    display: grid;
+    grid-template: 10vh 90vh / 100%;
+    position: relative;
 }
