@@ -13,7 +13,7 @@ const FileUpload = (props) => {
         <div className={s.form}>
             <div className={s.fileSelectionBar}>
                 <div className={s.fileName}>
-                    {props.file ? props.file.name : "File name"}
+                    {props.file ? props.file.name : "Имя файла"}
                 </div>
 
                 <label>
@@ -26,7 +26,7 @@ const FileUpload = (props) => {
                 </label>
             </div>
             <div onClick={handleSubmit} className={s.submit}>
-                Upload
+                Загрузить файл
             </div>
         </div>
     )

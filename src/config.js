@@ -4,20 +4,20 @@ import axios from "axios";
 import {fakeServer} from "./utils/FakeServer";
 
 export const PAGES_NAMES = {
-    PAGE_1: "Table generation",
-    PAGE_2: "Visual statistics"
+    PAGE_1: "TableGeneration",
+    PAGE_2: "VisualStatistics"
 };
 
 export const config = {
     url: "http://192.168.6.236:8000/",
     pages: [
         {
-            name: PAGES_NAMES.PAGE_1,
+            name: "Генерация таблицы",
             path: `/`,
             Component: HomePage,
         },
         {
-            name: PAGES_NAMES.PAGE_2,
+            name: "Визуальная статистика",
             path: `/${PAGES_NAMES.PAGE_2}`,
             Component: PageTwo,
         }

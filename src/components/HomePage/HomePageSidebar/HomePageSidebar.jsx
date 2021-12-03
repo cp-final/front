@@ -1,40 +1,24 @@
 import React from 'react';
 import s from "./HomePageSidebar.module.css";
-import {connect} from "react-redux";
-import {setFile, uploadFile} from "../../../store/reducers/filesReducer";
-import WithPreloader from "../../common/WithPreloader";
-import Swoosh from "../../common/SVGs/Swoosh/Swoosh";
-import Cross from "../../common/SVGs/Cross/Cross";
+import {NavLink} from "react-router-dom";
+import {config} from "../../../config";
 
 const HomePageSidebar = (props) => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!props.file) return;
-        props.uploadFile();
-    };
-
     return (
         <div className={s.wrapper}>
-            <form onSubmit={handleSubmit}>
-                <input onChange={(e) => props.setFile(e.target.files[0])} type="file"/>
-                <input type="submit"/>
-            </form>
+            <div className={s.title}>
+                Визуализация выбранных данных:
+            </div>
             <div>
-                <WithPreloader in={!props.fileUploadStatus.uploading} classNames={"page"}>
-                    <Swoosh shown={props.fileUploadStatus.uploaded}/>
-                    <Cross shown={props.fileUploadStatus.error}/>
-                </WithPreloader>
+                График
+            </div>
+            <div className={s.redirect}>
+                <NavLink to={config.pages[1].path} className={s.link}>
+                    Перейти в точные графики
+                </NavLink>
             </div>
         </div>
     )
 };
 
-const mstp = (state) => ({
-    file: state.files.file,
-    fileUploadStatus: state.files.fileUploadStatus
-});
-
-export default connect(mstp, {
-    setFile,
-    uploadFile
-})(HomePageSidebar);
+export default HomePageSidebar;

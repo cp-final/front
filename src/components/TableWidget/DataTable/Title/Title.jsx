@@ -7,10 +7,10 @@ const Title = (props) => {
     return (
         <div className={cn(rowS.row, s.title)}>
             <div className={cn(rowS.rowItem, s.title)}>
-                Number
+                Строка
             </div>
             <div className={cn(rowS.rowItem, s.title)}>
-                Segment
+                Сегмент
             </div>
         </div>
     )
