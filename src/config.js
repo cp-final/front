@@ -4,8 +4,8 @@ import axios from "axios";
 import {fakeServer} from "./utils/FakeServer";
 
 export const PAGES_NAMES = {
-    PAGE_1: "PAGE_1",
-    PAGE_2: "PAGE_2"
+    PAGE_1: "Table generation",
+    PAGE_2: "Visual statistics"
 };
 
 export const config = {
@@ -40,6 +40,6 @@ export const API = {
         const data = fakeServer.getNewTableData();
         setTimeout(() => {
             res(data);
-        }, 1000);
+        }, 3000);
     })
 };
