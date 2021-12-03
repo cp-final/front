@@ -1,0 +1,10 @@
+.wrapper {
+    width: 100%;
+    height: calc(100% - 5px);
+    padding: 10px;
+    display: grid;
+    grid-template: repeat(2, min-content) / 100%;
+    grid-gap: 5px;
+    border-width: 1px 0;
+    border-color: grey;
+}

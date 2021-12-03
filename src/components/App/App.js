@@ -8,6 +8,7 @@ import "./../../index.css";
 import {connect} from "react-redux";
 import {initialize} from "../../store/reducers/appReducer";
 import AppInitializingPreloader from "../AppInitializingPreloader/AppInitializingPreloader";
+import UploadingStatusWidget from "../common/UploadingStatusWidget/UploadingStatusWidget";
 
 const App = (props) => {
     const content = config.pages.map(page => {
@@ -58,6 +59,7 @@ const App = (props) => {
                     </div>
                 </div>
             </CSSTransition>
+            <UploadingStatusWidget />
         </>
     );
 };

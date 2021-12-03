@@ -1,0 +1,81 @@
+.widget {
+    width: 30vw;
+    height: 20vh;
+    position: fixed;
+    top: 100%;
+    right: 5%;
+    -webkit-transform: translate(0, -100%);
+    -moz-transform: translate(0, -100%);
+    -ms-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+    display: grid;
+    grid-template-rows: 50px auto;
+    border-radius: 16px;
+    box-shadow: 0 0 10px 0 grey;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.widget.hidden {
+    transform: translate(0, -50px);
+}
+
+.widget.closed {
+    transform: translate(0, 0);
+}
+
+.title {
+    height: 100%;
+    display: grid;
+    grid-template: 100% / 40% 60%;
+    border: solid 1px grey;
+    border-radius: 16px;
+}
+
+.titleText {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+    background: var(--main-active-theme);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.controls {
+    display: grid;
+    width: 100px;
+    grid-template: 100% / repeat(2, 1fr);
+    grid-gap: 20px;
+    justify-self: flex-end;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.control {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+    border-radius: 16px;
+}
+
+.control:nth-child(1):hover {
+    background: lightgrey;
+}
+
+.control:nth-child(2):hover {
+    background: rgba(107,12,166,0.69);
+}
+
+.queue {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-template-columns: 100%;
+}

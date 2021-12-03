@@ -6,7 +6,7 @@ import {setFile, uploadFile} from "../../../../store/reducers/filesReducer";
 const FileUpload = (props) => {
     const handleSubmit = () => {
         if (!props.file) return;
-        props.uploadFile();
+        props.uploadFile(props.file);
     };
 
     return (

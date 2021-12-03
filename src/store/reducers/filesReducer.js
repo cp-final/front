@@ -1,8 +1,11 @@
+import {setOpenedWidget} from "./uploadingWidget";
+
 const initialState = {
     file: null,
     fileUploadStatus: {
         uploading: false,
         uploaded: false,
+        uploadedVolume: 0,
         error: false,
     },
 };
@@ -34,18 +37,36 @@ const filesReducer = (state = initialState, action) => {
 export const setFile = (file) => ({type: SET_FILE, file});
 export const setFileUploadStatus = (fileUploadStatus) => ({type: SET_FILE_UPLOAD_STATUS, fileUploadStatus});
 
-export const uploadFile = () => (dispatch) => {
+export const uploadFile = (file) => async (dispatch) => {
     dispatch(setFileUploadStatus({
         ...initialState.fileUploadStatus,
-        uploading: true
+        uploading: true,
+        uploadedVolume: 0,
     }));
-    setTimeout(() => {
+
+    const speed = 125000;  // bytes per second
+
+    dispatch(setOpenedWidget(true));
+    let i = 0;
+    const id = setInterval(() => {
+        console.log(file.size);
+        let uploadedVolume = (speed / 10 * i) / file.size * 100;
+        if (uploadedVolume > 100) {
+            dispatch(setFileUploadStatus({
+                ...initialState.fileUploadStatus,
+                uploadedVolume: 100
+            }));
+            clearInterval(id);
+            return;
+        }
+
         dispatch(setFileUploadStatus({
             ...initialState.fileUploadStatus,
-            uploading: false,
-            error: true
+            uploading: true,
+            uploadedVolume: uploadedVolume
         }));
-    }, 1000);
+        i++;
+    }, 100);
 };
 
 export default filesReducer;
