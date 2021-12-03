@@ -11,6 +11,7 @@ const DataTableWidget = ({
 }) => {
     const ref = React.createRef();
     const load = () => {
+        //if (!initialized && !isFetching) getNewTableData();
         if (portion <= portionsCount && initialized && !isFetching) getTableData(portion);
     };
 
