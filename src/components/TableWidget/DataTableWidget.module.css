@@ -2,7 +2,6 @@
     width: 100%;
     height: 100%;
     overflow-y: scroll;
-    border: solid 2px;
 }
 
 .wrapper::-webkit-scrollbar {
@@ -11,6 +10,6 @@
 }
 
 .wrapper::-webkit-scrollbar-thumb {
-    background: #000;
+    background: transparent;
     border-radius: 5px;
 }

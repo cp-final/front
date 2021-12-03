@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import s from "./FileUploadSection.module.css";
+import React from 'react';
+import s from "./HomePageSidebar.module.css";
 import {connect} from "react-redux";
 import {setFile, uploadFile} from "../../../store/reducers/filesReducer";
 import WithPreloader from "../../common/WithPreloader";
 import Swoosh from "../../common/SVGs/Swoosh/Swoosh";
 import Cross from "../../common/SVGs/Cross/Cross";
 
-const FileUploadSection = (props) => {
+const HomePageSidebar = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!props.file) return;
@@ -37,4 +37,4 @@ const mstp = (state) => ({
 export default connect(mstp, {
     setFile,
     uploadFile
-})(FileUploadSection);
+})(HomePageSidebar);

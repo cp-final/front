@@ -1,9 +1,12 @@
 import React from 'react';
 import s from "./Row.module.css";
 
-const Row = ({data}) => {
+const Row = ({data, index}) => {
   return (
       <div className={s.row}>
+          <div className={s.rowItem}>
+              {index}
+          </div>
           <div className={s.rowItem}>
               {data.number}
           </div>

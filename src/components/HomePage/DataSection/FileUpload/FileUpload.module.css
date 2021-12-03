@@ -1,0 +1,49 @@
+.form {
+    display: grid;
+    grid-template: 40px / 70% 30%;
+    width: calc(100% - 10px);
+    grid-gap: 10px;
+    align-content: center;
+}
+
+.fileSelectionBar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px;
+    background: #ECE9E9;
+}
+
+.fileName {
+    width: 100%;
+    padding-left: 5%;
+    color: rgba(0, 0, 0, .5);
+}
+
+.fileInput {
+    display: none;
+}
+
+.fileInputPlaceholder {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: calc(100% - 40px);
+    background-image: url("../../../../assets/FolderOpen.svg");
+    cursor: pointer;
+}
+
+.submit {
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--main-active-theme);
+    color: white;
+    cursor: pointer;
+}
