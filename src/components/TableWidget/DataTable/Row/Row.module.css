@@ -1,16 +1,11 @@
 .row {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     border-radius: 16px;
-}
-
-.rowItem {
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
+    border: solid 2px transparent;
+    transition: .2s;
+    cursor: pointer;
 }
 
 .row:nth-child(2n + 1) {
@@ -19,4 +14,16 @@
 
 .row:nth-child(2n) {
     background: #DFD7E3;
+}
+
+.row:hover {
+    border-color: #6B0CA6;
+}
+
+.rowItem {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
 }

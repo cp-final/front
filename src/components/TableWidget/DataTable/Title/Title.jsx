@@ -7,9 +7,6 @@ const Title = (props) => {
     return (
         <div className={cn(rowS.row, s.title)}>
             <div className={cn(rowS.rowItem, s.title)}>
-                N
-            </div>
-            <div className={cn(rowS.rowItem, s.title)}>
                 Number
             </div>
             <div className={cn(rowS.rowItem, s.title)}>

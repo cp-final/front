@@ -6,7 +6,7 @@ import WithPreloader from "../../common/WithPreloader";
 
 const DataTable = ({data, isFetching}) => {
 
-    const rows = data.map((rowData, index) => <Row index={index + 1} key={index} data={rowData}/>);
+    const rows = data.map((rowData, index) => <Row key={index} data={rowData}/>);
 
     return (
       <div className={s.wrapper}>

@@ -2,4 +2,6 @@
     position: sticky;
     top: 0;
     background: white;
+    border: none !important;
+    cursor: auto;
 }
