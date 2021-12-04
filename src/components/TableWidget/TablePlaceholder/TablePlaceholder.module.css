@@ -4,6 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url("../../../assets/rows.svg");
+    background-size: cover;
 }
 
 .content {

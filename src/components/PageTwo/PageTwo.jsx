@@ -1,11 +1,26 @@
 import React from 'react';
+import s from "./PageTwo.module.css";
+import {connect} from "react-redux";
+import WithFade from "../common/WithFade/WithFade";
+import ChartPlaceholder from "../HomePage/HomePageSidebar/ChartWidget/ChartPlaceholder/ChartPlaceholder";
 
-const PageTwo = (props) => {
+const PageTwo = ({initialized}) => {
     return (
-        <div>
-            page two
+        <div className={s.wrapper}>
+            <WithFade isIn={initialized}>
+                <div className={s.pageFake}>
+
+                </div>
+            </WithFade>
+            <WithFade isIn={!initialized}>
+                <ChartPlaceholder/>
+            </WithFade>
         </div>
     )
 };
 
-export default PageTwo;
+const mstp = (state) => ({
+    initialized: state.data.initialized
+});
+
+export default connect(mstp)(PageTwo);

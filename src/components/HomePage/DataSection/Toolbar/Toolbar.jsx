@@ -18,7 +18,8 @@ const Toolbar = () => {
                       setter={setPieOpened}
                 >
                     <DropdownMenu opened={pieOpened} close={() =>{ setPieOpened(false)}}>
-                        <Item callback={() => console.log("pie")}>Something</Item>
+                        <Item callback={() => console.log("возр")}>По возрастанию</Item>
+                        <Item callback={() => console.log("убыв")}>По убыванию</Item>
                     </DropdownMenu>
                 </Tool>
 
