@@ -27,10 +27,6 @@ const Toolbar = () => {
                       active={sliderOpened}
                       setter={setSliderOpened}
                 >
-                    <DropdownMenu opened={sliderOpened} close={() =>{ setSliderOpened(false)}}>
-                        <Item callback={() => console.log("slider")}>Something</Item>
-                        <Item callback={() => console.log("slider2")}>Something2</Item>
-                    </DropdownMenu>
 
                 </Tool>
 
@@ -39,10 +35,6 @@ const Toolbar = () => {
                       active={wrenchOpened}
                       setter={setWrenchOpened}
                 >
-                    <DropdownMenu opened={wrenchOpened} close={() =>{ setWrenchOpened(false)}}>
-                        <Item callback={() => console.log("wrench")}>Something</Item>
-                        <Item callback={() => console.log("wrench2")}>Something2</Item>
-                    </DropdownMenu>
 
                 </Tool>
             </div>

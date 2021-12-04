@@ -5,5 +5,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: #e5eff1;
+}
+
+.logo {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -21,7 +21,7 @@ export const setInitialized = () => ({type: SET_INITIALIZED});
 export const initialize = () => (dispatch) => {
     setTimeout(() => {
         dispatch(setInitialized());
-    }, 1000);
+    }, 0);
 };
 
 export default appReducer;
