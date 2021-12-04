@@ -14,7 +14,6 @@ const Navbar = (props) => {
     return (
         <div className={s.wrapper}>
             <div className={s.logo}>
-                <img src={logo} alt=""/>
             </div>
             <nav className={s.nav}>
                 {items}
