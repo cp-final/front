@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import DataTable from "./DataTable/DataTable";
 import s from "./DataTableWidget.module.css";
 import {getNewTableData, getTableData} from "../../store/reducers/dataReducer";
+import TablePlaceholder from "./TablePlaceholder/TablePlaceholder";
+import WithFade from "../common/WithFade/WithFade";
 
 const DataTableWidget = ({
                              data, portion, portionsCount,
@@ -11,7 +13,7 @@ const DataTableWidget = ({
 }) => {
     const ref = React.createRef();
     const load = () => {
-        //if (!initialized && !isFetching) getNewTableData();
+        if (!initialized && !isFetching) getNewTableData();
         if (portion <= portionsCount && initialized && !isFetching) getTableData(portion);
     };
 
@@ -19,16 +21,14 @@ const DataTableWidget = ({
         if (e.target.scrollHeight <= e.target.scrollTop + e.target.offsetHeight) load();
     };
 
-    useEffect(() => {
-        if (!initialized && !isFetching){
-            getNewTableData();
-            ref.current.scrollTop = 0;
-        }
-    }, [initialized, isFetching]);
-
     return (
         <div ref={ref} className={s.wrapper} onScroll={handleScroll}>
-            <DataTable data={data} isFetching={isFetching}/>
+            <WithFade isIn={!initialized}>
+                <TablePlaceholder/>
+            </WithFade>
+            <WithFade isIn={initialized}>
+                <DataTable data={data} isFetching={isFetching}/>
+            </WithFade>
         </div>
     )
 };

@@ -1,4 +1,4 @@
-import {setOpenedWidget} from "./uploadingWidget";
+import {setHiddenWidget, setOpenedWidget} from "./uploadingWidget";
 import {getNewTableData, setUninitializedData} from "./dataReducer";
 
 const initialState = {
@@ -59,6 +59,7 @@ export const uploadFile = (file) => async (dispatch) => {
             }));
             dispatch(setUninitializedData());
             dispatch(getNewTableData());
+            dispatch(setHiddenWidget(true));
             clearInterval(id);
             return;
         }
