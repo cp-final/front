@@ -2,6 +2,7 @@ import {API} from "../../config";
 
 const initialState = {
     tableData: [],
+    selected: [],
     isFetchingTableData: false,
     portion: 0,
     portionsCount: 0,
@@ -15,6 +16,8 @@ const SET_NEW_TABLE_DATA = "DATA/SET_NEW_TABLE_DATA";
 const SET_UNINITIALIZED_DATA = "DATA/SET_UNINITIALIZED_DATA";
 const CLEAR_DATA = "DATA/CLEAR_DATA";
 const SET_CHART_DATA = "DATA/SET_CHART_DATA";
+const SELECT = "DATA/SELECT";
+const UNSELECT = "DATA/UNSELECT";
 
 const dataReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -52,6 +55,16 @@ const dataReducer = (state = initialState, action) => {
                 ...state,
                 chartData: action.data
             };
+        case SELECT:
+            return {
+                ...state,
+                selected: [...state.selected, state.tableData.find(item => item._id === action._id)],
+            };
+        case UNSELECT:
+            return {
+                ...state,
+                selected: state.selected.filter(item => item._id !== action._id),
+            };
         default:
             return state
     }
@@ -63,6 +76,8 @@ export const setNewTableData = (data) => ({type: SET_NEW_TABLE_DATA, data});
 export const setUninitializedData = () => ({type: SET_UNINITIALIZED_DATA});
 export const clearData = () => ({type: CLEAR_DATA});
 export const setChartData = (data) => ({type: SET_CHART_DATA, data});
+export const select = (_id) => ({type: SELECT, _id});
+export const unselect = (_id) => ({type: UNSELECT, _id});
 
 export const getTableData = (portion) => async (dispatch) => {
     dispatch(setIsFetchingTableData(true));
