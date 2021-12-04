@@ -3,8 +3,10 @@ import s from "./Toolbar.module.css";
 import Tool from "./Tool/Tool";
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import Item from "./Item/Item";
+import {connect} from "react-redux";
+import {getSelectedOverview} from "../../../../store/reducers/dataReducer";
 
-const Toolbar = () => {
+const Toolbar = ({selected, getSelectedOverview}) => {
     const [pieOpened, setPieOpened] = useState(false);
     const [sliderOpened, setSliderOpened] = useState(false);
     const [wrenchOpened, setWrenchOpened] = useState(false);
@@ -18,8 +20,7 @@ const Toolbar = () => {
                       setter={setPieOpened}
                 >
                     <DropdownMenu opened={pieOpened} close={() =>{ setPieOpened(false)}}>
-                        <Item callback={() => console.log("возр")}>По возрастанию</Item>
-                        <Item callback={() => console.log("убыв")}>По убыванию</Item>
+                        <Item callback={() => getSelectedOverview(selected)}>Визуализировать</Item>
                     </DropdownMenu>
                 </Tool>
 
@@ -28,7 +29,10 @@ const Toolbar = () => {
                       active={sliderOpened}
                       setter={setSliderOpened}
                 >
-
+                    <DropdownMenu opened={sliderOpened} close={() =>{ setSliderOpened(false)}}>
+                        <Item callback={() => console.log("возр")}>По возрастанию</Item>
+                        <Item callback={() => console.log("убыв")}>По убыванию</Item>
+                    </DropdownMenu>
                 </Tool>
 
                 <Tool className={s.wrench}
@@ -43,4 +47,10 @@ const Toolbar = () => {
     )
 };
 
-export default Toolbar;
+const mstp = (state) => ({
+    selected: state.data.selected,
+});
+
+export default connect(mstp, {
+    getSelectedOverview
+})(Toolbar);

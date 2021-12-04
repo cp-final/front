@@ -131,7 +131,9 @@ class FakeServer {
         return this.getTableData(0);
     };
 
-    getOverview = () => {
+    getOverview = (data) => {
+        data = !data || data.length === 0 ? this.tableData : data;
+
         let result = [
             {id: '1', label: "1", value: 0},
             {id: '2', label: "2", value: 0},
@@ -140,7 +142,8 @@ class FakeServer {
             {id: '5', label: "5", value: 0}
         ];
 
-        this.map(this.tableData).forEach(item => {
+        let d = typeof data[0] !== "object" ? this.map(data) : data;
+        d.forEach(item => {
             result.find(resultItem => +resultItem.id === item.segment).value += 1;
         });
 

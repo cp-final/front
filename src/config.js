@@ -47,7 +47,13 @@ export const API = {
 
         setTimeout(() => {
             res(data);
-        });
+        }, 1000);
     }),
+    getSelectedOverview: (data) => new Promise((res, rej) => {
+        const d = fakeServer.getOverview(data);
 
+        setTimeout(() => {
+            res(d);
+        }, 1000);
+    })
 };

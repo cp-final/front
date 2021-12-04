@@ -96,4 +96,9 @@ export const getNewTableData = () => async (dispatch) => {
     dispatch(setIsFetchingTableData(false));
 };
 
+export const getSelectedOverview = (selected) => async (dispatch) => {
+    const data = await API.getSelectedOverview(selected);
+    dispatch(setChartData(data));
+};
+
 export default dataReducer;
